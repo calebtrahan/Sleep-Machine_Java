@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="Name" layoutX="17.0" layoutY="134.0" />
+      <Label layoutX="21.0" layoutY="118.0" text="Entrainment Name" />
+      <Label layoutX="25.0" layoutY="46.0" text="Induction">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="283.0" layoutY="46.0" text="Outduction">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="80.0" layoutY="14.0" prefHeight="16.0" prefWidth="256.0" text="Add Entrainment">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="227.0" layoutY="46.0" text="Filler">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="137.0" layoutY="166.0" prefHeight="35.0" prefWidth="75.0" text="Short Description" textAlignment="RIGHT" wrapText="true" />
+      <TextArea fx:id="Description" layoutX="212.0" layoutY="115.0" prefHeight="86.0" prefWidth="160.0" wrapText="true" />
+      <HBox alignment="CENTER_RIGHT" layoutX="175.0" layoutY="201.0" prefHeight="35.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="AddButton" mnemonicParsing="false" onAction="#addandclose" text="Add" />
+            <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#close" text="Cancel" />
+         </children>
+      </HBox>
+      <Label layoutX="104.0" layoutY="46.0" text="Session Part(s)">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="18.0" layoutY="73.0" prefHeight="26.0" prefWidth="84.0">
+         <children>
+            <Button fx:id="IntroButton" alignment="CENTER" mnemonicParsing="false" text="Select" onAction="#selectintro"/>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="208.0" layoutY="73.0" prefHeight="26.0" prefWidth="75.0">
+         <children>
+            <Button fx:id="FillerButton" alignment="CENTER" mnemonicParsing="false" text="Select" onAction="#selectfiller"/>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="280.0" layoutY="73.0" prefHeight="26.0" prefWidth="90.0">
+         <children>
+            <Button fx:id="OutroButton" mnemonicParsing="false" text="Select" onAction="#selectouttro"/>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="109.0" layoutY="73.0" prefHeight="26.0" prefWidth="101.0">
+         <children>
+            <Button fx:id="SessionPartsButton" contentDisplay="CENTER" mnemonicParsing="false" text="Select" onAction="#selectentrainmentparts"/>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

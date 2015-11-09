@@ -1,0 +1,21 @@
+Option 1:
+    In
+    CycleType1
+    CycleType2
+    CycleType3
+    CycleType4
+    CycleType5
+    Out
+    Filler1
+    Filler2
+
+Option 2:
+    In
+    Part1
+    Part2
+    Part3
+    Part4
+    Part5
+    Out
+    Filler1
+    Filler2

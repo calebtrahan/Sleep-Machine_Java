@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Entrainments>
+    <entrainment>
+        <name>Entrainment Test Name</name>
+        <partcount>1</partcount>
+        <description>This Is A Short Description</description>
+        <intro>/home/caleb/Music/Avenged Sevenfold/Avenged Sevenfold/02 - Almost Easy.mp3</intro>
+        <part1>/home/caleb/Music/Hardwell/Hardwell - United We Are (Beatport Deluxe Version) [2013] [MP3] [320 kbps]-[DeanaJasmine]/01-hardwell_-_eclipse_(extended_mix).mp3</part1>
+        <filler>/home/caleb/Music/Hardwell/Hardwell - United We Are (Beatport Deluxe Version) [2013] [MP3] [320 kbps]-[DeanaJasmine]/02-hardwell_-_follow_me_feat_jason_derulo_(club_mix).mp3</filler>
+        <outro>/home/caleb/Music/Hardwell/Hardwell - United We Are (Beatport Deluxe Version) [2013] [MP3] [320 kbps]-[DeanaJasmine]/20-hardwell_-_young_again_feat_chris_jones_(album_version).mp3</outro>
+    </entrainment>
+    <entrainment>
+        <name>Entrainment Test 2</name>
+        <partcount>1</partcount>
+        <description>Short Description Of Entrainment Test 2</description>
+        <intro>/home/caleb/Music/Avicii/True/Hey Brother.mp3</intro>
+        <part1>/home/caleb/Music/In This Moment/Beautiful Tragedy/In This Moment - 01 - Whispers of October.mp3</part1>
+        <filler>/home/caleb/Music/Disturbed/Indestructible/Deceiver.mp3</filler>
+        <outro>/home/caleb/Music/Disturbed/Indestructible/Façade.mp3</outro>
+    </entrainment>
+</Entrainments>

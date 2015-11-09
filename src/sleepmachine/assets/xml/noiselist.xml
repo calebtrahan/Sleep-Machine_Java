@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Noises>
+    <noise>
+        <category>Category Here</category>
+        <name>dsfdsd</name>
+        <file>/home/caleb/Music/Avicii/True/Addicted To You.mp3</file>
+        <format>mp3</format>
+        <description>dghfghfghjf</description>
+    </noise>
+    <noise>
+        <category>Category Here</category>
+        <name>asdasdasdasfgd</name>
+        <file>/home/caleb/Music/Calvin Harris/Calvin Harris - Blame (feat. John Newman) [BURNS Remix].mp3</file>
+        <format>mp3</format>
+        <description>jjjjjjjhjhjhfghjfghfgh</description>
+    </noise>
+</Noises>

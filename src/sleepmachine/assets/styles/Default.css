@@ -1,0 +1,33 @@
+.text-field.error {
+    -fx-border-color: red;
+    -fx-focus-color: red;
+}
+
+.label.error {
+    -fx-border-color: red;
+    -fx-focus-color: red;
+}
+
+.choice-box.error {
+    -fx-border-color: red;
+    -fx-focus-color: red;
+}
+
+.label {
+    -fx-text-fill: #98A6A8;
+}
+
+.check-box {
+    -fx-text-fill: #98A6A8;
+}
+
+.button {
+    -fx-text-fill: black;
+    -fx-background-color: #98A6A8;
+    -fx-border-color: black;
+}
+
+.pane {
+    -fx-background-color: transparent;
+}
+

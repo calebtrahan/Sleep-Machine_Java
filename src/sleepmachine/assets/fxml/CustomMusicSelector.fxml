@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="151.0" layoutY="14.0" text="Add Custom Music">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="43.0" text="Note: All This Music Will Be Shuffled And Looped On Session Playback" />
+      <TableView fx:id="MusicTableView" layoutX="21.0" layoutY="78.0" prefHeight="283.0" prefWidth="412.0">
+        <columns>
+          <TableColumn fx:id="NameColumn" prefWidth="319.0" text="Music Name" />
+          <TableColumn fx:id="LengthColumn" minWidth="0.0" prefWidth="92.0" text="Length" />
+        </columns>
+      </TableView>
+      <HBox alignment="TOP_RIGHT" layoutX="21.0" layoutY="361.0" prefHeight="27.0" prefWidth="412.0">
+         <children>
+            <Button fx:id="AddFilesButton" mnemonicParsing="false" onAction="#addfiles" text="Add File(s)" />
+            <Button fx:id="PreviewSelectedButton" mnemonicParsing="false" onAction="#preview" text="Preview Selected" />
+            <Button fx:id="RemoveSelectedButton" mnemonicParsing="false" onAction="#removeselected" text="Remove Selected" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" layoutX="233.0" layoutY="406.0" prefHeight="27.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="AcceptButton" mnemonicParsing="false" onAction="#accept" text="Accept" />
+            <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#close" text="Cancel" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

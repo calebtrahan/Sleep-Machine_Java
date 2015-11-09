@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="198.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="114.0" layoutY="4.0" prefHeight="21.0" prefWidth="201.0" text="Add Session Parts" textAlignment="CENTER">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="RIGHT" layoutX="11.0" layoutY="57.0" prefHeight="21.0" prefWidth="129.0" text="Select Part 1's File:" />
+      <HBox alignment="CENTER_RIGHT" layoutX="246.0" layoutY="158.0" prefHeight="26.0" prefWidth="176.0">
+         <children>
+            <Button fx:id="AcceptButton" mnemonicParsing="false" text="Accept" onAction="#acceptandclose"/>
+            <Button fx:id="CancelButton" mnemonicParsing="false" text="Cancel" onAction="#closedialog"/>
+         </children>
+      </HBox>
+      <Label fx:id="Part2Label" contentDisplay="RIGHT" layoutX="221.0" layoutY="64.0" prefHeight="21.0" prefWidth="129.0" text="Select Part 2's File:" />
+      <CheckBox fx:id="Part2Switch" layoutX="221.0" layoutY="48.0" mnemonicParsing="false" onAction="#togglepart2" prefHeight="18.0" prefWidth="129.0" text="OFF" />
+      <Label fx:id="Part3Label" contentDisplay="RIGHT" layoutX="11.0" layoutY="120.0" prefHeight="21.0" prefWidth="129.0" text="Select Part 3's File:" />
+      <CheckBox fx:id="Part3Switch" layoutX="11.0" layoutY="104.0" mnemonicParsing="false" onAction="#togglepart3" prefHeight="18.0" prefWidth="129.0" text="OFF" />
+      <Label fx:id="Part4Label" contentDisplay="RIGHT" layoutX="221.0" layoutY="120.0" prefHeight="21.0" prefWidth="129.0" text="Select Part 4's File:" />
+      <CheckBox fx:id="Part4Switch" layoutX="221.0" layoutY="106.0" mnemonicParsing="false" onAction="#togglepart4" prefHeight="18.0" prefWidth="129.0" text="OFF" />
+      <HBox alignment="CENTER_LEFT" layoutX="139.0" layoutY="55.0" prefHeight="26.0" prefWidth="76.0">
+         <children>
+            <Button fx:id="OpenPart1Button" mnemonicParsing="false" onAction="#openpart1" text="Open" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="139.0" layoutY="115.0" prefHeight="26.0" prefWidth="76.0">
+         <children>
+            <Button fx:id="OpenPart3Button" mnemonicParsing="false" onAction="#openpart2" text="Open" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="349.0" layoutY="55.0" prefHeight="26.0" prefWidth="76.0">
+         <children>
+            <Button fx:id="OpenPart2Button" mnemonicParsing="false" onAction="#openpart3" text="Open" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="349.0" layoutY="115.0" prefHeight="26.0" prefWidth="76.0">
+         <children>
+            <Button fx:id="OpenPart4Button" mnemonicParsing="false" onAction="#openpart4" text="Open" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

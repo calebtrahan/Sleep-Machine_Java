@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="334.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="340.0" layoutY="64.0" prefHeight="16.0" prefWidth="111.0" text="Name This Sound" />
+      <Label alignment="CENTER" layoutX="76.0" layoutY="44.0" prefHeight="17.0" prefWidth="111.0" text="Load Sound File">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label layoutX="190.0" layoutY="204.0" prefHeight="16.0" prefWidth="128.0" text="Describe This Sound" />
+      <Label fx:id="FileLabel" alignment="CENTER" layoutX="33.0" layoutY="80.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: black;" text="No File Opened" />
+      <TextField fx:id="NameField" layoutX="289.0" layoutY="80.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextArea fx:id="DescriptionTextArea" layoutX="14.0" layoutY="220.0" prefHeight="58.0" prefWidth="480.0" wrapText="true" />
+      <Label fx:id="NameCharactersLeftLabel" layoutX="381.0" layoutY="106.0" text="99 Characters Left" />
+      <Label layoutX="185.0" layoutY="14.0" text="Add New Noise">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="DescriptionCharactersLeftLabel" layoutX="387.0" layoutY="276.0" text="99 Characters Left" />
+      <HBox alignment="CENTER_RIGHT" layoutX="32.0" layoutY="166.0" prefHeight="26.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="OpenButton" mnemonicParsing="false" onAction="#opensound" text="Open" />
+            <Button fx:id="PreviewButton" mnemonicParsing="false" onAction="#previewsound" text="Preview" />
+         </children>
+      </HBox>
+      <Label fx:id="DurationLabel" alignment="CENTER" layoutX="33.0" layoutY="140.0" prefHeight="26.0" prefWidth="200.0" style="-fx-border-color: black;" text="No File Opened" />
+      <Label alignment="CENTER_RIGHT" layoutX="102.0" layoutY="64.0" text="File Name:" />
+      <Label alignment="CENTER_RIGHT" layoutX="100.0" layoutY="124.0" prefHeight="16.0" prefWidth="63.0" text="Duration:" />
+      <HBox alignment="TOP_RIGHT" layoutX="295.0" layoutY="300.0" prefHeight="26.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="AddButton" mnemonicParsing="false" onAction="#addthisnoise" text="Add" />
+            <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#cancelthisnoise" text="Cancel" />
+         </children>
+      </HBox>
+      <ChoiceBox fx:id="CategoryChoiceBox" layoutX="288.0" layoutY="140.0" prefHeight="9.0" prefWidth="200.0" onAction="#selectcategory"/>
+      <Label layoutX="336.0" layoutY="124.0" text="Select A Category" />
+      <Button fx:id="AddCategoryButton" layoutX="358.0" layoutY="166.0" mnemonicParsing="false" text="Add New Category" onAction="#addnewcategory"/>
+      <Label alignment="CENTER" layoutX="314.0" layoutY="44.0" prefHeight="17.0" prefWidth="150.0" text="Name &amp; Categorize">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
