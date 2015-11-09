@@ -18,6 +18,7 @@ public class NoiseWidget implements Widget, Playable {
     private Button PreviewButton;
     private MediaPlayer currentplayer;
     private int playcount = 0;
+    private double a;
     private ArrayList<Media> sessionmedia;
     private sleepmachine.util.xml.Noise selectednoise;
 
