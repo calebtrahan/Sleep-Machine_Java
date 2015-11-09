@@ -14,7 +14,9 @@ import javafx.util.Duration;
 import sleepmachine.dialogs.*;
 import sleepmachine.util.GuiUtils;
 import sleepmachine.util.TimeUtils;
+import sleepmachine.util.xml.Entrainment;
 import sleepmachine.util.xml.Entrainments;
+import sleepmachine.util.xml.Noise;
 import sleepmachine.util.xml.Noises;
 import sleepmachine.widgets.*;
 
@@ -86,9 +88,9 @@ public class MainController implements Initializable {
     private boolean _wakeupsoundEnabled;
     private boolean _entrainmentEnabled;
     private Entrainments Entrainments;
-    private sleepmachine.util.xml.Entrainment SelectedEntrainment;
+    private Entrainment SelectedEntrainment;
     private Noises Noises;
-    private sleepmachine.util.xml.Noise SelectedNoise;
+    private Noise SelectedNoise;
     private MediaPlayer wakeupsoundplayer;
     private Calendar stoptime;
     private Timeline timeline;
@@ -144,12 +146,12 @@ public class MainController implements Initializable {
 //        EntrainmentOld.setEnabled(EntrainmentSwitch.isSelected());
     }
     public void entrainmentselectionchanged(ActionEvent actionEvent) {
-        SelectedEntrainment = Entrainments.getselectedentrainment(entrainmentchoicebox.getSelectionModel().getSelectedItem().toString());
-        if (SelectedEntrainment.checkifallpartsexist()) {
-            EntrainmentDescription.setText(SelectedEntrainment.getDescription());
+        setSelectedEntrainment(Entrainments.getselectedentrainment(entrainmentchoicebox.getSelectionModel().getSelectedItem().toString()));
+        if (getSelectedEntrainment().checkifallpartsexist()) {
+            EntrainmentDescription.setText(getSelectedEntrainment().getDescription());
         } else {
-            EntrainmentDescription.setText(SelectedEntrainment.getName() + " Is Missing Files Necessary To Play It. Please Select Another");
-            SelectedEntrainment = null;
+            EntrainmentDescription.setText(getSelectedEntrainment().getName() + " Is Missing Files Necessary To Play It. Please Select Another");
+            setSelectedEntrainment(null);
         }
     }
 
@@ -272,7 +274,7 @@ public class MainController implements Initializable {
                 if (wakeuptime == null) {throw new NullPointerException("No Session Duration Set");}
             } else {throw new NullPointerException("No Session Duration Set");}
         // Check If Session Duration Is Long Enough For EntrainmentWidget
-            if (getsessionduration() < SelectedEntrainment.getMinimumduration()) {throw new NullPointerException("Session Duration");}
+            if (getsessionduration() < getSelectedEntrainment().getMinimumduration()) {throw new NullPointerException("Session Duration");}
         // Check Session Part Status
             int session_parts = 0;
             if (is_entrainmentEnabled()) {if (! EntrainmentWidget.isValid()) {throw new NullPointerException("EntrainmentWidget");} else {session_parts++;}}
@@ -331,7 +333,7 @@ public class MainController implements Initializable {
         adjustvolumebutton.setDisable(!status);
     }
     public void starttimeline() {
-        timeline = new Timeline(new KeyFrame(javafx.util.Duration.millis(1000), ae -> updateui()));
+        timeline = new Timeline(new KeyFrame(Duration.millis(1000), ae -> updateui()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
         stoptime = Calendar.getInstance();
@@ -466,6 +468,8 @@ public class MainController implements Initializable {
 // Getters And Setters
     public Noises getNoises() {return Noises;}
     public Entrainments getEntrainments() {return Entrainments;}
+    public void setSelectedEntrainment(Entrainment selectedEntrainment) {SelectedEntrainment = selectedEntrainment;}
+    public Entrainment getSelectedEntrainment() {return SelectedEntrainment;}
     public boolean is_noiseEnabled() {
         return _noiseEnabled;
     }
@@ -494,14 +498,10 @@ public class MainController implements Initializable {
     public sleepmachine.widgets.EntrainmentWidget getEntrainmentWidget() {return EntrainmentWidget;}
     public sleepmachine.widgets.NoiseWidget getNoiseWidget() {return NoiseWidget;}
     public SleepDurationWidget getSleepDurationWidget() {return SleepDurationWidget;}
-
-
+    public WakeUpSoundWidget getWakeUpSoundWidget() {return WakeUpSoundWidget;}
 
 
     public void test(ActionEvent actionEvent) {
 //        CustomMusicWidget.create(new Duration(28800 * 1000));
     }
-
-
-
 }

@@ -33,15 +33,18 @@ public class EntrainmentWidget implements Widget, Playable {
     public Entrainments getEntrainments() {
     return entrainments;
 }
-    public void setEntrainments(Entrainments entrainments) {
-        this.entrainments = entrainments;
-    }
+    public void setEntrainments(Entrainments entrainments) {this.entrainments = entrainments;}
 
 // Playable Methods
     @Override
-    public void create(Duration duration) {
-
-        // TODO Get Wakeup Duration Here, And Use Build Below As A Template To Make The Session
+    public boolean create(Duration duration) {
+        if (root.getSelectedEntrainment() != null && root.getSleepDurationWidget().getTotalsessionduration().toSeconds() > 0.0) {
+            if (root.getWakeUpSoundWidget().getWakeupduration() != null) {
+                return root.getSelectedEntrainment().build(root.getWakeUpSoundWidget().getWakeupduration(), root.getSleepDurationWidget().getadjustedduration());
+            } else {
+                return root.getSelectedEntrainment().build(new Duration(0.0), root.getSleepDurationWidget().getadjustedduration());
+            }
+        } else {return false;}
     }
     @Override
     public void startplayback() {
@@ -98,5 +101,5 @@ public class EntrainmentWidget implements Widget, Playable {
     }
 
 // Other Methods
-    public void build(Duration wakeupfileduration, sleepmachine.util.xml.Entrainment selectedentrainment) {selectedentrainment.build(wakeupfileduration, root.getSleepDurationWidget().getTotalsessionduration());}
+
 }

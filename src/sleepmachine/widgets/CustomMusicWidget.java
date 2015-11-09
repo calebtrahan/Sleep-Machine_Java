@@ -22,13 +22,14 @@ public class CustomMusicWidget implements Widget, Playable {
     private ArrayList<CustomMusicDialog.MusicFile> MusicFiles;
     private ArrayList<File> musicfilestoplay;
     private MediaPlayer currentplayer;
-    private int playcount = 0;
+    private int playcount;
     private ArrayList<Media> sessionmedia;
 
     public CustomMusicWidget(CheckBox onOffSwitch, Label descriptionLabel, Button EditButton) {
         OnOffSwitch = onOffSwitch;
         DescriptionLabel = descriptionLabel;
         this.EditButton = EditButton;
+        playcount = 0;
     }
 
 // Getters And Setters
@@ -60,7 +61,7 @@ public class CustomMusicWidget implements Widget, Playable {
     }
 
 // Playable Methods
-    public void create(Duration totalduration) {
+    public boolean create(Duration totalduration) {
         ArrayList<File> songlist = getmusicfilesasfiles();
         ArrayList<File> currentsonglist = new ArrayList<>();
         Duration currentduration = new Duration(0.0);
@@ -82,6 +83,7 @@ public class CustomMusicWidget implements Widget, Playable {
             currentduration = currentduration.add(nextfileduration);
         }
         setMusicfilestoplay(currentsonglist);
+        return getMusicfilestoplay() != null && getMusicfilestoplay().size() > 0;
     }
     @Override
     public void startplayback() {

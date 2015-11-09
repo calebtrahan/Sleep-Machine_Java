@@ -4,7 +4,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 public interface Playable {
-    void create(Duration duration);
+    int playcount = 0;
+    boolean create(Duration duration);
     void startplayback();
     void playnextfile();
     void play();

@@ -5,11 +5,9 @@ import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import sleepmachine.util.FileUtils;
 import sleepmachine.util.GuiUtils;
-import sleepmachine.util.TimeUtils;
 
 import java.io.File;
 import java.util.Optional;
@@ -46,7 +44,7 @@ public class WakeUpSoundWidget implements Widget, Playable {
 
 // Playable Methods
     @Override
-    public void create(Duration duration) {}
+    public boolean create(Duration duration) {return getWakeupduration() != null;}
     @Override
     public void startplayback() {}
     @Override

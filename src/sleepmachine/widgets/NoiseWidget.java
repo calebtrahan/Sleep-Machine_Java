@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import sleepmachine.util.xml.Noise;
 
 import java.util.ArrayList;
 
@@ -18,9 +19,8 @@ public class NoiseWidget implements Widget, Playable {
     private Button PreviewButton;
     private MediaPlayer currentplayer;
     private int playcount = 0;
-    private double a;
     private ArrayList<Media> sessionmedia;
-    private sleepmachine.util.xml.Noise selectednoise;
+    private Noise selectednoise;
 
     public NoiseWidget(CheckBox onOffSwitch, ChoiceBox category, ChoiceBox selection, TextArea description, Button previewButton) {
         OnOffSwitch = onOffSwitch;
@@ -31,18 +31,16 @@ public class NoiseWidget implements Widget, Playable {
     }
 
 // Getters And Setters
-    public sleepmachine.util.xml.Noise getSelectednoise() {
+    public Noise getSelectednoise() {
         return selectednoise;
     }
-    public void setSelectednoise(sleepmachine.util.xml.Noise selectednoise) {
+    public void setSelectednoise(Noise selectednoise) {
         this.selectednoise = selectednoise;
     }
 
 // Playable Methods
     @Override
-    public void create(Duration duration) {
-
-    }
+    public boolean create(Duration duration) {return getSelectednoise() != null;}
     @Override
     public void startplayback() {
         currentplayer = new MediaPlayer(new Media(selectednoise.getFile().toURI().toString()));

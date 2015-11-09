@@ -34,6 +34,13 @@ public class SleepDurationWidget implements Widget {
     public void setDurationType(DurationType durationType) {
         this.durationType = durationType;
     }
+    public Duration getadjustedduration() {
+        if (getTotalsessionduration() != null) {
+            return getTotalsessionduration();
+        } else {
+            return new Duration(getWakeuptime().getTimeInMillis() - Calendar.getInstance().getTimeInMillis());
+        }
+    }
 
 // Widget Methods
     @Override
