@@ -8,6 +8,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import sleepmachine.dialogs.CustomMusicDialog;
 import sleepmachine.util.FileUtils;
+import sleepmachine.util.GuiUtils;
 import sleepmachine.util.TimeUtils;
 
 import java.io.File;
@@ -24,6 +25,7 @@ public class CustomMusicWidget implements Widget, Playable {
     private MediaPlayer currentplayer;
     private int playcount;
     private ArrayList<Media> sessionmedia;
+    private boolean enabled;
 
     public CustomMusicWidget(CheckBox onOffSwitch, Label descriptionLabel, Button EditButton) {
         OnOffSwitch = onOffSwitch;
@@ -59,6 +61,8 @@ public class CustomMusicWidget implements Widget, Playable {
     public void setMusicfilestoplay(ArrayList<File> musicfilestoplay) {
         this.musicfilestoplay = musicfilestoplay;
     }
+    public boolean isEnabled() {return enabled;}
+    public void setEnabled(boolean enabled) {this.enabled = enabled;}
 
 // Playable Methods
     public boolean create(Duration totalduration) {
@@ -126,7 +130,7 @@ public class CustomMusicWidget implements Widget, Playable {
 
     }
 
-// Widget Methods
+    // Widget Methods
     @Override
     public boolean isValid() {return false;}
     @Override
@@ -150,7 +154,32 @@ public class CustomMusicWidget implements Widget, Playable {
         DescriptionLabel.setText("No Custom Music Added");
         EditButton.setText("Add");
     }
+    @Override
+    public void statusswitch() {
+        GuiUtils.togglecheckboxtext(OnOffSwitch);
+        boolean status = OnOffSwitch.isSelected();
+        setEnabled(status);
+        EditButton.setDisable(!status);
+        DescriptionLabel.setDisable(!status);
+        if (status) {opencustommusicdialog();}
+    }
 
 // Other Methods
-
+    public void opencustommusicdialog() {
+        if (getMusicFiles() == null) {
+            CustomMusicDialog a = new CustomMusicDialog(null);
+            a.showAndWait();
+            setMusicFiles(a.getCustomMusic());
+            DescriptionLabel.setText(getdescription());
+            if (a.getCustomMusic() == null) {OnOffSwitch.setSelected(false); statusswitch();}
+            setEnabled(a.getCustomMusic() != null);
+        } else {
+            CustomMusicDialog a = new CustomMusicDialog(null, getMusicFiles());
+            a.showAndWait();
+            setMusicFiles(a.getCustomMusic());
+            DescriptionLabel.setText(getdescription());
+            if (a.getCustomMusic() == null) {OnOffSwitch.setSelected(false); statusswitch();}
+            setEnabled(a.getCustomMusic() != null);
+        }
+    }
 }

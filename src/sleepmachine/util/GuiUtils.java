@@ -57,4 +57,24 @@ public class GuiUtils {
         Optional<ButtonType> answer = a.showAndWait();
         return answer.isPresent() && answer.get() == ButtonType.OK;
     }
+
+    public static void showinformationdialog(String titletext, String headertext, String contexttext) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle(titletext);
+        a.setHeaderText(headertext);
+        a.setContentText(contexttext);
+        a.showAndWait();
+    }
+
+    public static void showerrordialog(String titletext, String headertext, String contenttext) {
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        a.setTitle(titletext);
+        a.setHeaderText(headertext);
+        a.setContentText(contenttext);
+        a.showAndWait();
+    }
+
+    public static void togglecheckboxtext(CheckBox checkbox) {
+        if (checkbox.isSelected()) {checkbox.setText("ON");} else {checkbox.setText("OFF");}
+    }
 }

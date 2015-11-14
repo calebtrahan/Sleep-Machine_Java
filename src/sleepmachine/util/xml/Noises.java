@@ -40,20 +40,30 @@ public class Noises {
     }
 
     public ArrayList<String> getallcategories() {
-        getNoise();
-        if (Noise != null) {
-            ArrayList<String> allcategories = new ArrayList<>();
-            for (Noise i : Noise) {
-                String thiscategory = i.getCategory();
-                if (allcategories.size() > 0) {
-                    boolean categorynew = true;
-                    for (String x : allcategories) {if (x.equals(thiscategory)) {categorynew = false;}}
-                    if (! categorynew) {continue;}
+        try {
+            getNoise();
+            if (Noise != null) {
+                ArrayList<String> allcategories = new ArrayList<>();
+                for (Noise i : Noise) {
+                    String thiscategory = i.getCategory();
+                    if (allcategories.size() > 0) {
+                        boolean categorynew = true;
+                        for (String x : allcategories) {
+                            if (x.equals(thiscategory)) {
+                                categorynew = false;
+                            }
+                        }
+                        if (!categorynew) {
+                            continue;
+                        }
+                    }
+                    allcategories.add(thiscategory);
                 }
-                allcategories.add(thiscategory);
+                return allcategories;
+            } else {
+                return null;
             }
-            return allcategories;
-        } else {return null;}
+        } catch (NullPointerException e) {e.printStackTrace(); return null;}
     }
 
     public List<Noise> getnoisesincategory(String categoryname) {

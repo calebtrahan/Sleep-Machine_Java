@@ -21,6 +21,8 @@ public class WakeUpSoundWidget implements Widget, Playable {
     private File wakeupfile;
     private Duration wakeupduration;
     private MediaPlayer currentplayer;
+    private MediaPlayer previewplayer;
+    private boolean enabled;
 
     public WakeUpSoundWidget(CheckBox onOffSwitch, TextField selectedFile, Button openFileButton, Button previewButton) {
         OnOffSwitch = onOffSwitch;
@@ -40,7 +42,12 @@ public class WakeUpSoundWidget implements Widget, Playable {
         return wakeupfile;
     }
     public void setWakeupfile(File wakeupfile) {this.wakeupfile = wakeupfile;}
-
+    public boolean isEnabled() {
+        return enabled;
+    }
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
 // Playable Methods
     @Override
@@ -72,7 +79,7 @@ public class WakeUpSoundWidget implements Widget, Playable {
 
     }
 
-    // Widget Methods
+// Widget Methods
     @Override
     public boolean isValid() {
         return false;
@@ -95,6 +102,15 @@ public class WakeUpSoundWidget implements Widget, Playable {
         wakeupduration = null;
         if (currentplayer != null) currentplayer.dispose();
         wakeupfile = null;
+    }
+    @Override
+    public void statusswitch() {
+        boolean status = OnOffSwitch.isSelected();
+        GuiUtils.togglecheckboxtext(OnOffSwitch);
+        setEnabled(status);
+        SelectedFile.setDisable(!status);
+        OpenFileButton.setDisable(!status);
+        PreviewButton.setDisable(!status);
     }
 
 // Other Methods
@@ -122,5 +138,24 @@ public class WakeUpSoundWidget implements Widget, Playable {
         }
     }
 }
-
+    public void preview() {
+        if (getWakeupfile() != null) {
+            if (previewplayer != null) {
+                if (previewplayer.getStatus() == MediaPlayer.Status.PLAYING) {
+                    previewplayer.stop();
+                    PreviewButton.setText("Preview");
+                } else {
+                    previewplayer.play();
+                    PreviewButton.setText("Stop");
+                }
+            } else {
+                Media tempmedia = new Media(getWakeupfile().toURI().toString());
+                previewplayer = new MediaPlayer(tempmedia);
+                previewplayer.play();
+                PreviewButton.setText("Stop");
+            }
+        } else {
+            GuiUtils.showerrordialog("Cannot Preview", "No Wakeup File Selected", "Select A Wakeup File First To Preview");
+        }
+    }
 }

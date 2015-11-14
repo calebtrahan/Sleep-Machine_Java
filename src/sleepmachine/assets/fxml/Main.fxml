@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-
 <VBox prefHeight="450.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sleepmachine.MainController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
@@ -127,7 +121,7 @@
                           </children>
                       </HBox>
                       <Label fx:id="statusbar" alignment="BOTTOM_LEFT" layoutX="11.0" layoutY="72.0" prefHeight="30.0" prefWidth="254.0" />
-                  <CheckBox fx:id="SessionPlayerSwitch" layoutX="613.0" layoutY="-8.0" mnemonicParsing="false" onAction="#getsessionplayerready" prefHeight="46.0" prefWidth="57.0" text="OFF" />
+                  <CheckBox fx:id="SessionPlayerSwitch" layoutX="613.0" layoutY="-8.0" mnemonicParsing="false" onAction="#playerstatusswitch" prefHeight="46.0" prefWidth="57.0" text="OFF" />
                   <Button fx:id="TestButton" layoutX="294.0" layoutY="67.0" mnemonicParsing="false" onAction="#test" text="TEST" />
                </children>
             </Pane>

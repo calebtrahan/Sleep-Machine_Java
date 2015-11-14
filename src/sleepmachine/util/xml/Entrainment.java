@@ -25,6 +25,7 @@ public class Entrainment {
     private String description;
     private int partcount;
     private double minimumduration; // In seconds
+    private ArrayList<File> entrainmentfiles;
 
 // CONSTRUCTORS
     public Entrainment() {}
@@ -138,6 +139,7 @@ public class Entrainment {
     public void setMinimumduration(double minimumduration) {
         this.minimumduration = minimumduration;
     }
+    public ArrayList<File> getEntrainmentfiles() {return entrainmentfiles;}
 
 // METHODS
     public boolean build(Duration wakeupduration, Duration totalsessionduration) {
@@ -145,7 +147,7 @@ public class Entrainment {
         if (wakeupduration != null) {totalsessionduration = totalsessionduration.subtract(wakeupduration);}
         double totalentrainmentseconds = totalsessionduration.toSeconds();
         double currententrainmentseconds = 0.0;
-        ArrayList<File> entrainmentfiles = new ArrayList<>();
+        entrainmentfiles = new ArrayList<>();
     // Add Intro
         currententrainmentseconds += FileUtils.getaudioduration(getIntro());
     // Calculate Part Time

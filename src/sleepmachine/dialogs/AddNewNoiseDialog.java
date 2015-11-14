@@ -13,9 +13,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sleepmachine.MainController;
+import sleepmachine.util.FileUtils;
 import sleepmachine.util.xml.Noise;
 import sleepmachine.util.xml.Noises;
-import sleepmachine.util.FileUtils;
+import sleepmachine.widgets.NoiseWidget;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -23,7 +24,10 @@ import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class AddNewNoiseDialog extends Stage implements Initializable {
     public Label FileLabel;
@@ -42,18 +46,18 @@ public class AddNewNoiseDialog extends Stage implements Initializable {
     private int maxnamecharacters = 20;
     private File soundfile;
     private MediaPlayer previewplayer;
-    private MainController root;
+    private NoiseWidget noiseWidget;
     private double duration;
     private String category;
     private ArrayList<String> categorylist;
 
-    public AddNewNoiseDialog(Parent parent, MainController root) {
-        this.root = root;
+    public AddNewNoiseDialog(Parent parent, NoiseWidget noiseWidget) {
+        this.noiseWidget = noiseWidget;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../assets/fxml/AddNewNoiseDialog.fxml"));
         fxmlLoader.setController(this);
         try {setScene(new Scene(fxmlLoader.load())); this.setTitle("Add Ambience");}
         catch (IOException e) {e.printStackTrace();}
-        categorylist = root.getNoises().getallcategories();
+        categorylist = noiseWidget.getAllnoises().getallcategories();
         synccategories();
     }
 
@@ -157,7 +161,7 @@ public class AddNewNoiseDialog extends Stage implements Initializable {
         boolean categorygood = category != null;
         if (filegood && namegood && descriptiongood && categorygood) {
             try {
-                Noises noises = root.getNoises();
+                Noises noises = noiseWidget.getAllnoises();
                 List<Noise> noiselist;
                 if (MainController.NOISESXMLFILE.exists()) {
                     noiselist = noises.getNoise();

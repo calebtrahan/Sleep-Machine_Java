@@ -42,7 +42,7 @@ public class SleepDurationWidget implements Widget {
         }
     }
 
-// Widget Methods
+// Widget Implementation
     @Override
     public boolean isValid() {
         if (getDurationType() == DurationType.TIME) {return getTotalsessionduration() != null;}
@@ -66,6 +66,8 @@ public class SleepDurationWidget implements Widget {
         setTotalsessionduration(null);
         resetui();
     }
+    @Override
+    public void statusswitch() {}
 
 // Other Methods
     public void openwakeuptimedialog() {

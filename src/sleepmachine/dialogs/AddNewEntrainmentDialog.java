@@ -8,10 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import sleepmachine.MainController;
+import sleepmachine.util.FileUtils;
 import sleepmachine.util.TimeUtils;
 import sleepmachine.util.xml.Entrainment;
 import sleepmachine.util.xml.Entrainments;
-import sleepmachine.util.FileUtils;
+import sleepmachine.widgets.EntrainmentWidget;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -33,7 +34,7 @@ public class AddNewEntrainmentDialog extends Stage implements Initializable {
     public Button AddButton;
     public Button CancelButton;
     public Button SessionPartsButton;
-    private MainController root;
+    private EntrainmentWidget entrainmentWidget;
     private File introfile;
     private File fillerfile;
     private File part_1_file;
@@ -43,8 +44,8 @@ public class AddNewEntrainmentDialog extends Stage implements Initializable {
     private File outrofile;
     private int sessionparts;
 
-    public AddNewEntrainmentDialog(Parent parent, MainController root) {
-        this.root = root;
+    public AddNewEntrainmentDialog(Parent parent, EntrainmentWidget entrainmentWidget) {
+        this.entrainmentWidget = entrainmentWidget;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../assets/fxml/AddNewEntrainmentDialog.fxml"));
         fxmlLoader.setController(this);
         try {setScene(new Scene(fxmlLoader.load())); this.setTitle("Add Ambience");}
@@ -108,7 +109,7 @@ public class AddNewEntrainmentDialog extends Stage implements Initializable {
         boolean outrogood = getOutrofile() != null;
         if (namegood && descriptiongood && introgood && partsgood && fillergood && outrogood) {
             try {
-                Entrainments entrainments = root.getEntrainments();
+                Entrainments entrainments = entrainmentWidget.getAllentrainments();
                 int parts = getSessionparts();
                 List<Entrainment> entrainmentList;
                 if (MainController.ENTRAINMENTXMLFILE.exists()) {entrainmentList = entrainments.getEntrainment();}
