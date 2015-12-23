@@ -141,7 +141,7 @@ public class Entrainment {
     }
     public ArrayList<File> getEntrainmentfiles() {return entrainmentfiles;}
 
-// METHODS
+// OTHER METHODS
     public boolean build(Duration wakeupduration, Duration totalsessionduration) {
         if (getMinimumduration() > totalsessionduration.toSeconds()) {return false;}
         if (wakeupduration != null) {totalsessionduration = totalsessionduration.subtract(wakeupduration);}

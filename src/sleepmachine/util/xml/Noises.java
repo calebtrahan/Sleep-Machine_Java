@@ -17,18 +17,18 @@ public class Noises {
 
     private List<Noise> Noise;
 
+// Getters And Setters
     public List<Noise> getNoise() {
         return Noise;
     }
-
     public void setNoise(List<Noise> noise) {this.Noise = noise;}
 
+// Other Methods
     public void printoutallnoises() {
         for (Noise i : Noise) {
             System.out.println(i.toString());
         }
     }
-
     public void populatefromxml() throws JAXBException {
         // TODO Pull All The Data From XML File And Create New NoiseWidget Files
         if (MainController.NOISESXMLFILE.exists()) {
@@ -38,7 +38,6 @@ public class Noises {
             setNoise(noises1.getNoise());
         }
     }
-
     public ArrayList<String> getallcategories() {
         try {
             getNoise();
@@ -65,7 +64,6 @@ public class Noises {
             }
         } catch (NullPointerException e) {e.printStackTrace(); return null;}
     }
-
     public List<Noise> getnoisesincategory(String categoryname) {
         List<Noise> thiscategorynoises = new ArrayList<>();
         for (Noise i : Noise) {
@@ -73,7 +71,6 @@ public class Noises {
         }
         return thiscategorynoises;
     }
-
     public ArrayList<String> getnoisenamesincategory(String categoryname) {
         ArrayList<String> thiscategorynoises = new ArrayList<>();
         for (Noise i : Noise) {
@@ -81,7 +78,6 @@ public class Noises {
         }
         return thiscategorynoises;
     }
-
     public Noise getselectednoise(String name) {
         sleepmachine.util.xml.Noise selectednoise = null;
         for (sleepmachine.util.xml.Noise noise : Noise) {
@@ -90,4 +86,5 @@ public class Noises {
         if (selectednoise != null && selectednoise.getFile().exists()) {return selectednoise;}
         else {return null;}
     }
+
 }

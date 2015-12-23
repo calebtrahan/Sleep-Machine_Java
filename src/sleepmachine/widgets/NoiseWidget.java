@@ -53,7 +53,7 @@ public class NoiseWidget implements Widget, Playable {
     public boolean isEnabled() {return enabled;}
     public void setEnabled(boolean enabled) {this.enabled = enabled;}
 
-// Playable Methods
+// Playable Implementation
     @Override
     public boolean create(Duration duration) {return getSelectednoise() != null;}
     @Override
@@ -89,7 +89,7 @@ public class NoiseWidget implements Widget, Playable {
     @Override
     public MediaPlayer getCurrentPlayer() {return currentplayer;}
 
-    // Widget Methods
+    // Widget Implementation
     @Override
     public boolean isValid() {
         return false;

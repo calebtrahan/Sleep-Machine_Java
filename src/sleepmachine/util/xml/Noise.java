@@ -1,7 +1,7 @@
 package sleepmachine.util.xml;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.io.File;
 
@@ -17,7 +17,6 @@ public class Noise {
     private String category;
 
     public Noise() {}
-
     public Noise(String name, File file, Double duration, String description, String category) {
             this.name = name;
             this.file = file.getAbsoluteFile();
@@ -27,78 +26,50 @@ public class Noise {
             this.category = category;
     }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder b = new StringBuilder();
-//        b.append("Name: ").append(name);
-//        b.append(" File Location: ").append(file.getAbsolutePath());
-//        b.append(" Description: ").append(description);
-//        return b.toString();
-//    }
-
-    private void findduration() {
-//        media = new Media(file.toURI().toString());
-//        player = new MediaPlayer(media);
-//        player.setOnReady(() -> {
-//            duration = media.getDuration();
-//            player.dispose();
-//        });
-    }
-
+// Getters And Seters
     public File getFile() {
         return file;
     }
-
     public void setFile(File file) {
         this.file = file;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public Double getDuration() {
         return duration;
     }
-
     public void setDuration(Double duration) {
         this.duration = duration;
     }
-
     public String getFormat() {
         return format;
     }
-
     public void setFormat(String format) {
         this.format = format;
     }
-
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
-
     public String getCategory() {
         return category;
     }
-
     public void setCategory(String category) {
         this.category = category;
     }
-
     @Override
     public String toString() {
         return String.format("Name: %s File: %s Duration: %s Format: %s Description: %s Category: %s",
             name, file.getAbsolutePath(), duration, format, description, category);
     }
 
+// Other Methods
     public boolean isthisnoisevalid() {return file.exists();}
 
 //
@@ -108,5 +79,6 @@ public class Noise {
 //    public MediaPlayer getPlayer() {return player;}
 //    public Duration getDuration() {return duration;}
 //    public Boolean getValid() {return valid;}
+
 }
 

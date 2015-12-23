@@ -49,7 +49,7 @@ public class WakeUpSoundWidget implements Widget, Playable {
         this.enabled = enabled;
     }
 
-// Playable Methods
+// Playable Implementation
     @Override
     public boolean create(Duration duration) {return getWakeupduration() != null;}
     @Override
@@ -79,7 +79,7 @@ public class WakeUpSoundWidget implements Widget, Playable {
 
     }
 
-// Widget Methods
+// Widget Implementation
     @Override
     public boolean isValid() {
         return false;
