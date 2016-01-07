@@ -5,9 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.Duration;
-import sleepmachine.dialogs.DurationType;
-import sleepmachine.util.GuiUtils;
-import sleepmachine.util.TimeUtils;
 import sleepmachine.widgets.*;
 
 import java.io.File;
@@ -21,48 +18,38 @@ import java.util.ResourceBundle;
         // NoiseWidget Categories And Selections In A Tree Format
 
 public class MainController implements Initializable {
-// FXML Binding Fields
-    // Sleep Duration Widget Fields
     public Label DurationDescription;
     public Label DurationActual;
     public Button SetSleepDurationButton;
     public Button SetWakeupTimeButton;
-    // EntrainmentOld Widget Fields
     public CheckBox EntrainmentSwitch;
     public ChoiceBox entrainmentchoicebox;
     public TextArea EntrainmentDescription;
-    // NoiseWidget Loop Widget Fields
     public CheckBox NoiseLoopSwitch;
     public ChoiceBox noisecategorychoicebox;
     public ChoiceBox noisechoicebox;
     public TextArea NoiseDescription;
     public Button noisepreviewbutton;
-    // Wakeup Sound Widget Fields
     public CheckBox WakeupSoundSwitch;
     public TextField WakeupFileSelection;
     public Button wakeupfileselectbutton;
     public Button WakeupPreviewButton;
-    // Custom Music Widget Fields
     public CheckBox CustomMusicSwitch;
-    // Session Player Widget Fields
     public ProgressBar playerprogressbar;
     public Button startbutton;
     public Button stopbutton;
     public Label statusbar;
-    // Custom Music Widget Fields
     public Label CustomMusicDescriptionLabel;
     public Button CustomMusicEditButton;
     public CheckBox SessionPlayerSwitch;
     public Button adjustvolumebutton;
     public Button TestButton;
-// Widget Controller Fields
     private SleepDurationWidget SleepDurationWidget;
     private sleepmachine.widgets.EntrainmentWidget EntrainmentWidget;
     private sleepmachine.widgets.NoiseWidget NoiseWidget;
     private WakeUpSoundWidget WakeUpSoundWidget;
     private sleepmachine.widgets.CustomMusicWidget CustomMusicWidget;
-    private SessionPlayer sessionPlayer;
-// Static Directory Fields
+    private PlayerWidget playerWidget;
     public static String WORKINGDIRECTORY = System.getProperty("user.dir");
     public static File SOURCEDIRECTORY = new File(MainController.WORKINGDIRECTORY, "src");
     public static File PROJECTDIRECTORY = new File(MainController.SOURCEDIRECTORY, "sleepmachine");
@@ -74,7 +61,7 @@ public class MainController implements Initializable {
     public static File ENTRAINMENTXMLFILE = new File(MainController.XMLDIRECTORY, "entrainmentlist.xml");
     public static File NOISESXMLFILE = new File(MainController.XMLDIRECTORY, "noiselist.xml");
     public static int MAXSESSIONDURATION = 14;
-// MainController Fields
+// Main Controller Fields
     private Calendar stoptime;
     private Timeline timeline;
     private Duration sessionduration;
@@ -88,7 +75,7 @@ public class MainController implements Initializable {
         NoiseWidget = new NoiseWidget(NoiseLoopSwitch, noisecategorychoicebox, noisechoicebox, NoiseDescription, noisepreviewbutton);
         WakeUpSoundWidget = new WakeUpSoundWidget(WakeupSoundSwitch, WakeupFileSelection, wakeupfileselectbutton, WakeupPreviewButton);
         CustomMusicWidget = new CustomMusicWidget(CustomMusicSwitch, CustomMusicDescriptionLabel, CustomMusicEditButton);
-        sessionPlayer = new SessionPlayer(SessionPlayerSwitch, playerprogressbar, startbutton, stopbutton, adjustvolumebutton, statusbar,
+        playerWidget = new PlayerWidget(SessionPlayerSwitch, playerprogressbar, startbutton, stopbutton, adjustvolumebutton, statusbar,
                 SleepDurationWidget, EntrainmentWidget, NoiseWidget, WakeUpSoundWidget, CustomMusicWidget, current_program_State, this);
         // Get Noises
         noiseloopstatusswitch(null);
@@ -109,11 +96,11 @@ public class MainController implements Initializable {
         sessionduration = SleepDurationWidget.getTotalsessionduration();
     }
     public double getsessionduration() {
-        DurationType sessiontype = SleepDurationWidget.getDurationType();
-        if (sessiontype == DurationType.DURATION) {
+        sleepmachine.widgets.SleepDurationWidget.DurationType sessiontype = SleepDurationWidget.getDurationType();
+        if (sessiontype == sleepmachine.widgets.SleepDurationWidget.DurationType.DURATION) {
             return SleepDurationWidget.getTotalsessionduration().toMinutes();
-        } else if (sessiontype == DurationType.TIME) {
-            return (double) TimeUtils.getMinutesTillCalendar(SleepDurationWidget.getWakeuptime());
+        } else if (sessiontype == sleepmachine.widgets.SleepDurationWidget.DurationType.TIME) {
+            return (double) Tools.getMinutesTillCalendar(SleepDurationWidget.getWakeuptime());
         } else {return 0.0;}
     }
 
@@ -137,16 +124,20 @@ public class MainController implements Initializable {
     public void opencustommusicdialog(ActionEvent actionEvent) {CustomMusicWidget.opencustommusicdialog();}
 
 // Session Player Methods
-    public void playerstatusswitch(ActionEvent actionEvent) {sessionPlayer.statusswitch();}
-    public void startsessionplayback(ActionEvent actionEvent) {sessionPlayer.startsessionplayback();}
-    public void stopsessionplayback(ActionEvent actionEvent) {sessionPlayer.stopsessionplayback();}
-    public void adjustvolume(ActionEvent actionEvent) {sessionPlayer.adjustvolume();}
+    public void playerstatusswitch(ActionEvent actionEvent) {
+        playerWidget.statusswitch();}
+    public void startsessionplayback(ActionEvent actionEvent) {
+        playerWidget.startsessionplayback();}
+    public void stopsessionplayback(ActionEvent actionEvent) {
+        playerWidget.stopsessionplayback();}
+    public void adjustvolume(ActionEvent actionEvent) {
+        playerWidget.adjustvolume();}
 
 // Menu Bar Action Methods
     public void addnoiseloop(ActionEvent actionEvent) {NoiseWidget.addnoiseloop();}
     public void addentrainment(ActionEvent actionEvent) {EntrainmentWidget.addentrainment();}
     public void resetallvalues(ActionEvent actionEvent) {
-        boolean answer = GuiUtils.getanswerdialog("Conirmation", "Clear All Values", "Really Clear And Reset All Selected Options?");
+        boolean answer = Tools.getanswerdialog("Conirmation", "Clear All Values", "Really Clear And Reset All Selected Options?");
         if (answer) {
             SleepDurationWidget.resetallvalues();
             EntrainmentWidget.resetallvalues();
@@ -169,4 +160,8 @@ public class MainController implements Initializable {
 //        CustomMusicWidget.create(new Duration(28800 * 1000));
     }
 
+// Enums
+    public enum ProgramState {
+        Setting_Up, Ready_To_Play, Playing_Session, Playing_WakeUpFile, Stopped, Session_Ended
+    }
 }

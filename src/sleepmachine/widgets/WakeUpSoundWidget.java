@@ -6,8 +6,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
-import sleepmachine.util.FileUtils;
-import sleepmachine.util.GuiUtils;
+import sleepmachine.Playable;
+import sleepmachine.Tools;
+import sleepmachine.Widget;
 
 import java.io.File;
 import java.util.Optional;
@@ -106,7 +107,7 @@ public class WakeUpSoundWidget implements Widget, Playable {
     @Override
     public void statusswitch() {
         boolean status = OnOffSwitch.isSelected();
-        GuiUtils.togglecheckboxtext(OnOffSwitch);
+        Tools.togglecheckboxtext(OnOffSwitch);
         setEnabled(status);
         SelectedFile.setDisable(!status);
         OpenFileButton.setDisable(!status);
@@ -126,15 +127,15 @@ public class WakeUpSoundWidget implements Widget, Playable {
     fileChooser.setTitle("Select A File To Be Used As A Wakeup File");
     File newwakeupfile = fileChooser.showOpenDialog(null);
     if (newwakeupfile != null) {
-        Boolean filegood = FileUtils.testmediafile(newwakeupfile);
+        Boolean filegood = Tools.testmediafile(newwakeupfile);
         if (filegood) {
-            GuiUtils.validate(SelectedFile, true);
+            Tools.validate(SelectedFile, true);
             SelectedFile.setText(newwakeupfile.getName());
             setWakeupfile(newwakeupfile);
-            setWakeupduration(new Duration(FileUtils.getaudioduration(newwakeupfile) * 1000));
+            setWakeupduration(new Duration(Tools.getaudioduration(newwakeupfile) * 1000));
         } else {
             SelectedFile.setText("<" + newwakeupfile.getName() + "> Isn't A Valid Audio File");
-            GuiUtils.validate(SelectedFile, false);
+            Tools.validate(SelectedFile, false);
         }
     }
 }
@@ -155,7 +156,7 @@ public class WakeUpSoundWidget implements Widget, Playable {
                 PreviewButton.setText("Stop");
             }
         } else {
-            GuiUtils.showerrordialog("Cannot Preview", "No Wakeup File Selected", "Select A Wakeup File First To Preview");
+            Tools.showerrordialog("Cannot Preview", "No Wakeup File Selected", "Select A Wakeup File First To Preview");
         }
     }
 }
