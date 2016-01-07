@@ -8,9 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sleepmachine.MainController;
 import sleepmachine.Tools;
-import sleepmachine.Widget;
+import sleepmachine.interfaces.Widget;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +17,7 @@ import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class SleepDurationWidget implements Widget {
+    public static int MAXSESSIONDURATION = 14;
     private Calendar wakeuptime;
     private Duration totalsessionduration;
     private Label DurationDescription;
@@ -129,7 +129,7 @@ public class SleepDurationWidget implements Widget {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        HoursSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MainController.MAXSESSIONDURATION, 0));
+        HoursSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MAXSESSIONDURATION, 0));
         HoursSpinner.getValueFactory().valueProperty().addListener((observable, oldValue, newValue) -> updateui());
         MinutesSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
         MinutesSpinner.getValueFactory().valueProperty().addListener((observable, oldValue, newValue) -> updateui());

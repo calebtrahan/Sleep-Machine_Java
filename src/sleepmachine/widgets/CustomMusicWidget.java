@@ -15,9 +15,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import sleepmachine.Playable;
 import sleepmachine.Tools;
-import sleepmachine.Widget;
+import sleepmachine.interfaces.Playable;
+import sleepmachine.interfaces.Widget;
 
 import java.io.File;
 import java.io.IOException;

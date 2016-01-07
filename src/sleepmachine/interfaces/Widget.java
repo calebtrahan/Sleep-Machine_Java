@@ -1,4 +1,4 @@
-package sleepmachine;
+package sleepmachine.interfaces;
 
 public interface Widget {
     boolean enabled = false;

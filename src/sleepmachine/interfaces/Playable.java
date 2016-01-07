@@ -1,4 +1,4 @@
-package sleepmachine;
+package sleepmachine.interfaces;
 
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;

@@ -45,10 +45,10 @@ public class MainController implements Initializable {
     public Button adjustvolumebutton;
     public Button TestButton;
     private SleepDurationWidget SleepDurationWidget;
-    private sleepmachine.widgets.EntrainmentWidget EntrainmentWidget;
-    private sleepmachine.widgets.NoiseWidget NoiseWidget;
+    private EntrainmentWidget EntrainmentWidget;
+    private NoiseWidget NoiseWidget;
     private WakeUpSoundWidget WakeUpSoundWidget;
-    private sleepmachine.widgets.CustomMusicWidget CustomMusicWidget;
+    private CustomMusicWidget CustomMusicWidget;
     private PlayerWidget playerWidget;
     public static String WORKINGDIRECTORY = System.getProperty("user.dir");
     public static File SOURCEDIRECTORY = new File(MainController.WORKINGDIRECTORY, "src");
@@ -60,8 +60,6 @@ public class MainController implements Initializable {
     public static File XMLDIRECTORY = new File(MainController.ASSETDIRECTORY, "xml");
     public static File ENTRAINMENTXMLFILE = new File(MainController.XMLDIRECTORY, "entrainmentlist.xml");
     public static File NOISESXMLFILE = new File(MainController.XMLDIRECTORY, "noiselist.xml");
-    public static int MAXSESSIONDURATION = 14;
-// Main Controller Fields
     private Calendar stoptime;
     private Timeline timeline;
     private Duration sessionduration;
@@ -86,7 +84,7 @@ public class MainController implements Initializable {
         current_program_State = ProgramState.Setting_Up;
     }
 
-// Sleep Duration Widget Methods
+// Sleep Duration Methods
     public void setWakeupTime(ActionEvent actionEvent) {
         SleepDurationWidget.openwakeuptimedialog();
         wakeuptime = SleepDurationWidget.getWakeuptime();
@@ -104,22 +102,22 @@ public class MainController implements Initializable {
         } else {return 0.0;}
     }
 
-// EntrainmentWidget Widget Methods
+// Entrainment Methods
     public void entrainmentstatusswitch(ActionEvent actionEvent) {EntrainmentWidget.statusswitch();}
     public void entrainmentselectionchanged(ActionEvent actionEvent) {EntrainmentWidget.changeentrainmentselection();}
 
-// NoiseWidget Loop Widget Methods
+// Noise Methods
     public void noiseloopstatusswitch(ActionEvent actionEvent) {NoiseWidget.statusswitch();}
     public void noisecategorychanged(ActionEvent actionEvent) {NoiseWidget.changecategory();}
     public void noiseselectionchanged(ActionEvent actionEvent) {NoiseWidget.changeselection();}
     public void previewnoiseselected(ActionEvent actionEvent) {NoiseWidget.preview();}
 
-// Wake Up Sound Widget Methods
+// Wake Up Sound Methods
     public void wakeupsoundstatusswitch(ActionEvent actionEvent) {WakeUpSoundWidget.statusswitch();}
     public void selectnewwakeupfile(ActionEvent actionEvent) {WakeUpSoundWidget.choosenewwakeupsound();}
     public void previewwakeupfile(ActionEvent actionEvent) {WakeUpSoundWidget.preview();}
 
-// Custom Music Widget Methods
+// Custom Music Methods
     public void custommusicstatusswitch(ActionEvent actionEvent) {CustomMusicWidget.statusswitch();}
     public void opencustommusicdialog(ActionEvent actionEvent) {CustomMusicWidget.opencustommusicdialog();}
 
@@ -149,9 +147,9 @@ public class MainController implements Initializable {
     public void exit(ActionEvent actionEvent) {}
 
 // Getters And Setters
-    public sleepmachine.widgets.CustomMusicWidget getCustomMusicWidgetWidget() {return CustomMusicWidget;}
-    public sleepmachine.widgets.EntrainmentWidget getEntrainmentWidget() {return EntrainmentWidget;}
-    public sleepmachine.widgets.NoiseWidget getNoiseWidget() {return NoiseWidget;}
+    public CustomMusicWidget getCustomMusicWidgetWidget() {return CustomMusicWidget;}
+    public EntrainmentWidget getEntrainmentWidget() {return EntrainmentWidget;}
+    public NoiseWidget getNoiseWidget() {return NoiseWidget;}
     public SleepDurationWidget getSleepDurationWidget() {return SleepDurationWidget;}
     public WakeUpSoundWidget getWakeUpSoundWidget() {return WakeUpSoundWidget;}
 

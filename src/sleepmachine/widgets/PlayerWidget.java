@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import sleepmachine.MainController;
 import sleepmachine.Tools;
-import sleepmachine.Widget;
+import sleepmachine.interfaces.Widget;
 
 import java.io.IOException;
 import java.util.Calendar;

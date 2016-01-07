@@ -14,9 +14,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import sleepmachine.MainController;
-import sleepmachine.Playable;
 import sleepmachine.Tools;
-import sleepmachine.Widget;
+import sleepmachine.interfaces.Playable;
+import sleepmachine.interfaces.Widget;
 import sleepmachine.xml.Noise;
 import sleepmachine.xml.Noises;
 
